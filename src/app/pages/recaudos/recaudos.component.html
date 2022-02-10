@@ -1,0 +1,59 @@
+<h1>Recaudos</h1>
+
+<div class="row">
+    <input #fechaConsulta type="text" class="form-control me-2" placeholder="Ingrese una fecha con el formato YYYY-MM-DD" >
+    <button class="btn btn-outline" (click)="guardarRecaudos( fechaConsulta.value )" >Guardar recaudos</button>
+</div>
+
+<div class="row">
+    <button class="btn btn-outline-success" (click)="obtenerRecaudos()" >Consultar</button>
+</div>
+
+<div *ngIf="recaudosAux.length === 0" >
+    No hay datos de recaudos, haga click en el boton de consultar
+</div>
+<div *ngIf="recaudosAux.length > 0" >
+    <div class="row">
+        <input #filtro type="text" (keyup.enter)="buscar(filtro.value)" class="form-control me-2" placeholder="Filtre por los campos: Estación, Categoría o Sentido"  >
+    </div>
+    <div class="row" >
+        <div class="col">
+            Estacion
+        </div>
+        <div class="col">
+            Sentido
+        </div>
+        <div class="col">
+            Categoria
+        </div>
+        <div class="col">
+            Hora
+        </div>
+        <div class="col">
+            Cantidad
+        </div>
+        <div class="col">
+            Valor Tabulado
+        </div>
+    </div>
+    <div class="row" *ngFor="let recaudo of recaudosAux" >
+        <div class="col">
+            {{recaudo.Estacion}}
+        </div>
+        <div class="col">
+            {{recaudo.Sentido}}
+        </div>
+        <div class="col">
+            {{recaudo.Categoria}}
+        </div>
+        <div class="col">
+            {{recaudo.Hora}}
+        </div>
+        <div class="col">
+            {{recaudo.Cantidad}}
+        </div>
+        <div class="col">
+            {{recaudo.ValorTabulado}}
+        </div>
+    </div>
+</div>
